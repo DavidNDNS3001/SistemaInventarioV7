@@ -58,7 +58,8 @@ namespace SistemasInventarioV7.AccesoDatos.Repositorio
             //throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<T>> ObtenerTodos(Expression<Func<T, bool>> filtro = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string incluirPropiedades = null, bool isTracking = true)
+        public async Task<IEnumerable<T>> ObtenerTodos(Expression<Func<T, bool>> filtro = null, 
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string incluirPropiedades = null, bool isTracking = true)
         {
             IQueryable<T> query = dbset;
             if (filtro != null)
@@ -67,11 +68,11 @@ namespace SistemasInventarioV7.AccesoDatos.Repositorio
             }
             if (incluirPropiedades != null)
             {
-                foreach (var incluirPro in incluirPropiedades.Split(new char[] {'.'},StringSplitOptions.RemoveEmptyEntries))
+                foreach (var incluirProp in incluirPropiedades.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
                 {
-                    query=query.Include(incluirPro);      //Ejemplo "Categoria, Marca"
+                    query = query.Include(incluirProp);    //  ejemplo "Categoria,Marca"
                 }
-            }
+            }            
             if(orderBy != null)
             {
                 query = orderBy(query); 

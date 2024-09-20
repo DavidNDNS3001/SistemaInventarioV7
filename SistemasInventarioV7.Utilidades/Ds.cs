@@ -10,5 +10,6 @@ namespace SistemasInventarioV7.Utilidades
     {
         public const string Exitosa = "Existosa";
         public const string Error = "Error";
+        public const string ImagenRuta = @"\imagenes\productos\";
     }
 }
