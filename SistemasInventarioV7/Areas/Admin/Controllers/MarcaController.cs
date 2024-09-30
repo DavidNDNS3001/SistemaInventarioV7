@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SistemasInventarioV7.AccesoDatos.Repositorio.IRepositorio;
 using SistemasInventarioV7.Modelos;
 using SistemasInventarioV7.Utilidades;
@@ -6,6 +7,7 @@ using SistemasInventarioV7.Utilidades;
 namespace SistemasInventarioV7.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = Ds.Role_Admin)]
     public class MarcaController : Controller
     {
 
